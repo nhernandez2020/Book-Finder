@@ -11,11 +11,11 @@ If you would rather see the deployed version of the application click here.
 Technologies
 
 
-*MongoDB with mongoose
-*Express
-*React
-*Node.js
-*Roles
+**MongoDB with mongoose
+**Express
+**React
+**Node.js
+**Roles
 
 
 Noe- Full-Stack Developer

@@ -25,10 +25,7 @@ class Search extends Component {
   handleFormSubmit = (e) => {
     e.preventDefault();
     API.getBook(this.state.title).then((response) => {
-      this.setState({
-        books: response.data.items,
-        title: "",
-      });
+      this.setState({ books: response.data.items, title: "" });
     });
   };
 
@@ -36,12 +33,12 @@ class Search extends Component {
     return (
       <>
         <Display>
-          <h1> Let 's Find A Book For You!</h1>{" "}
-        </Display>{" "}
+          <h1>Let's Find A Book For You!</h1>
+        </Display>
         <Container>
           <div>
             <Form>
-              <h1> Search For A Book </h1>{" "}
+              <h1>Search For A Book</h1>
               <Input
                 value={this.state.title}
                 onChange={this.handleInputChange}
@@ -52,22 +49,14 @@ class Search extends Component {
                 disabled={!this.state.title}
                 onClick={this.handleFormSubmit}
               >
-                <strong> Submit Book </strong>{" "}
-              </FormBtn>{" "}
-            </Form>{" "}
-          </div>{" "}
+                <strong>Submit Book</strong>
+              </FormBtn>
+            </Form>
+          </div>
           <div>
-            <h1
-              style={{
-                textAlign: "center",
-              }}
-            >
-              {" "}
-              Results{" "}
-            </h1>{" "}
+            <h1 style={{ textAlign: "center" }}>Results</h1>
             {this.state.books.length ? (
               <List>
-                {" "}
                 {this.state.books.map((book) => (
                   <ListItem key={book.id}>
                     <Card>
@@ -79,36 +68,34 @@ class Search extends Component {
                               : ""
                           }
                           alt={book.volumeInfo.title}
-                        />{" "}
-                      </CardImage>{" "}
+                        />
+                      </CardImage>
                       <div>
                         <CardBody>
                           <h4>
-                            {" "}
-                            {book.volumeInfo.title}
-                            by {book.volumeInfo.authors}{" "}
-                          </h4>{" "}
-                          <p> {book.volumeInfo.description} </p>{" "}
-                        </CardBody>{" "}
+                            {book.volumeInfo.title} by {book.volumeInfo.authors}
+                          </h4>
+                          <p>{book.volumeInfo.description}</p>
+                        </CardBody>
                         <CardFooter>
                           <a
                             href={book.volumeInfo.previewLink}
                             target="_blank"
                             rel="noopener noreferrer"
                           >
-                            preview{" "}
-                          </a>{" "}
+                            preview
+                          </a>
                           <Button onClick={() => API.saveBook(book)} save />
                         </CardFooter>
                       </div>
                     </Card>
                   </ListItem>
-                ))}{" "}
+                ))}
               </List>
             ) : (
-              <h2> No Results To Display </h2>
-            )}{" "}
-          </div>{" "}
+              <h2>No Results To Display</h2>
+            )}
+          </div>
         </Container>
       </>
     );

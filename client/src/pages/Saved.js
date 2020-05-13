@@ -20,9 +20,7 @@ class Saved extends Component {
   loadBooks = () => {
     API.getBooks()
       .then((res) => {
-        this.setState({
-          books: res.data,
-        });
+        this.setState({ books: res.data });
       })
       .catch((err) => console.log(err));
   };
@@ -37,13 +35,11 @@ class Saved extends Component {
     return (
       <>
         <Display>
-          <h1> Saved Books </h1>{" "}
-        </Display>{" "}
+          <h1>Saved Books</h1>
+        </Display>
         <Container>
-          {" "}
           {this.state.books.length ? (
             <List>
-              {" "}
               {this.state.books.map((book) => (
                 <ListItem key={book._id}>
                   <Card>
@@ -51,36 +47,34 @@ class Saved extends Component {
                       <Image
                         src={book.image ? book.image : ""}
                         alt={book.title}
-                      />{" "}
-                    </CardImage>{" "}
+                      />
+                    </CardImage>
                     <div>
                       <CardBody>
                         <h4>
-                          {" "}
-                          {book.title}
-                          by {book.authors}{" "}
-                        </h4>{" "}
-                        <p> {book.description} </p>{" "}
-                      </CardBody>{" "}
+                          {book.title} by {book.authors}
+                        </h4>
+                        <p>{book.description}</p>
+                      </CardBody>
                       <CardFooter>
                         <a
                           href={book.link}
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          preview{" "}
-                        </a>{" "}
-                        <Button onClick={() => this.handleDelete(book._id)} />{" "}
-                      </CardFooter>{" "}
-                    </div>{" "}
-                  </Card>{" "}
+                          preview
+                        </a>
+                        <Button onClick={() => this.handleDelete(book._id)} />
+                      </CardFooter>
+                    </div>
+                  </Card>
                 </ListItem>
-              ))}{" "}
+              ))}
             </List>
           ) : (
-            <h2> No Saved Books </h2>
-          )}{" "}
-        </Container>{" "}
+            <h2>No Saved Books</h2>
+          )}
+        </Container>
       </>
     );
   }
